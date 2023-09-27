@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .faq-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .faq-button .question {
+    font-weight: bold;
+  }
+
+  .faq-button .icon {
+    transition: transform 0.3s ease;
+  }
+
+  .answer-container {
+    overflow: hidden;
+    transition: height 0.5s ease;
+  }
+
+  .answer {
+    padding: 10px 20px;
+    background-color: white;
+  }
+</style>
+<title>FAQ Button</title>
+</head>
+<body>
+<div class="faq-button">
+  <div class="question">What is this FAQ about?</div>
+  <div class="icon">+</div>
+</div>
+<div class="answer-container">
+  <div class="answer">
+    This FAQ is about creating an interactive FAQ button with a slide-down animation.
+  </div>
+</div>
+<script>
+  const faqButton = document.querySelector('.faq-button');
+  const answerContainer = document.querySelector('.answer-container');
+  const answer = document.querySelector('.answer');
+  const icon = document.querySelector('.icon');
+
+  faqButton.addEventListener('click', () => {
+    if (answerContainer.clientHeight === 0) {
+      answer.style.display = 'block';
+      icon.textContent = '×';
+      answerContainer.style.height = `${answer.scrollHeight}px`;
+    } else {
+      answer.style.display = 'none';
+      icon.textContent = '+';
+      answerContainer.style.height = '0';
+    }
+  });
+</script>
+</body>
+</html>

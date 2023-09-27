@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .faq-button {
+        background-color: grey;
+        padding: 10px;
+        border: none;
+        border-bottom: 1rem white;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0rem 2rem;
+      }
+
+      .faq-button-icon {
+        font-size: 20px;
+        transition: transform 0.3s;
+      }
+
+      .faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        /* width: 100%; */
+        background-color: grey;
+        /* padding: 10px; */
+        margin-left: 2rem;
+      }
+
+      .faq-content.show {
+        max-height: 300px;
+        max-width: 75rem; /* Adjust this value based on your content */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="faq">
+      <div class="faq-button" id="faqButton">
+        FAQ Section
+        <span class="faq-button-icon">+</span>
+      </div>
+
+      <div class="faq-content" id="faqContent">
+        <p>This is the answer of the FAQ</p>
+      </div>
+    </div>
+    <script>
+      const faqButton = document.getElementById("faqButton");
+      const faqContent = document.getElementById("faqContent");
+      const faqButtonIcon = document.querySelector(".faq-button-icon");
+
+      faqButton.addEventListener("click", () => {
+        if (faqContent.classList.contains("show")) {
+          faqContent.classList.remove("show");
+          faqButtonIcon.style.transform = "rotate(0deg)";
+        } else {
+          faqContent.classList.add("show");
+          faqButtonIcon.style.transform = "rotate(45deg)";
+        }
+      });
+    </script>
+  </body>
+</html>
